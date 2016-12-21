@@ -4,7 +4,7 @@ namespace Ryanvade\VirtMan\Command;
 
 use Ryanvade\VirtMan\Machine\Machine;
 
-class Command {
+abstract class Command {
   protected $name = "";
   protected $machine = null;
 
@@ -12,4 +12,6 @@ class Command {
     $this->name = $name;
     $this->machine = $machine;
   }
+
+  abstract function run();
 }
