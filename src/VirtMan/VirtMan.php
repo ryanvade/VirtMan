@@ -24,8 +24,14 @@ use Storage\Storage;
 
 class VirtMan {
 
+  const VERSION = '0.0.1';
+
   public function __construct() {
 
+  }
+
+  protected function libvirtIsInstalled() {
+    return function_exists('libvirt_version');
   }
 
 }
