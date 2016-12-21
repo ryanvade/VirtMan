@@ -6,11 +6,9 @@ use Ryanvade\VirtMan\Machine\Machine;
 
 abstract class Command {
   protected $name = "";
-  protected $machine = null;
 
-  protected function __construct(String $name, Machine $machine){
+  protected function __construct(String $name){
     $this->name = $name;
-    $this->machine = $machine;
   }
 
   abstract function run();
