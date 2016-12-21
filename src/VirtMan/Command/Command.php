@@ -11,5 +11,5 @@ abstract class Command {
     $this->name = $name;
   }
 
-  abstract function run();
+  abstract public function run();
 }

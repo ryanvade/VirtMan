@@ -18,6 +18,9 @@ class CreateVirtmanMachinesTable extends Migration
           $table->timestamps();
           $table->string('name');
           $table->string('type');
+          $table->string('arch')->default('x86_64');
+          $table->unsignedInteger('memory');
+          $table->unsignedInteger('cpus');
           $table->string('status')->default('installing');
           $table->date('started_at');
           $table->date('stopped_at');
