@@ -22,6 +22,10 @@ use Ryanvade\VirtMan\Machine\Machine;
 use Ryanvade\VirtMan\Network\Network;
 use Ryanvade\VirtMan\Storage\Storage;
 
-class vmManager {
+class VirtMan {
+
+  public function __construct() {
+    
+  }
 
 }
