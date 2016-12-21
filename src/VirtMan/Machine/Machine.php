@@ -31,7 +31,7 @@ class Machine extends Model {
 
   public function addGroup($group)
   {
-
+    // TODO
   }
 
   public function networks()
@@ -41,7 +41,7 @@ class Machine extends Model {
 
   public function addNetwork($network)
   {
-
+    // TODO
   }
 
   public function storage()
@@ -51,7 +51,7 @@ class Machine extends Model {
 
   public function addStorage($storage)
   {
-
+    // TODO
   }
 
 }
