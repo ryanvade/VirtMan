@@ -1,0 +1,16 @@
+{
+    "name": "ryanvade/virtman",
+    "description": "A LibVirt wrapper for Laravel.",
+    "type": "library",
+    "require": {
+        "illuminate/support": "^5.3",
+        "illuminate/database": "^5.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ryan Owens",
+            "email": "RyanOwens@linux.com"
+        }
+    ]
+}
