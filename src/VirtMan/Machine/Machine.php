@@ -22,33 +22,86 @@ class Machine extends Model {
    * date timestamps
    */
 
+  /**
+   * Migration Table
+   *
+   * @var string
+   */
   protected $table = 'virtman_machines';
 
+  /**
+    * Machines Groups
+    *
+    * Get the groups a machine belongs to.
+    *
+    * @param None
+    * @return Belongs To Relationship
+    */
   public function groups()
   {
     return $this->belongsTo('Ryanvade\VirtMan\Group\Group');
   }
 
-  public function addGroup($group)
+  /**
+   * Add Group
+   *
+   * Add a Group or array of groups to the machine.
+   *
+   * @param TODO
+   * @return TODO
+   */
+  public function addGroup(Group $group)
   {
     // TODO
   }
 
+  /**
+    * Machines Networks
+    *
+    * Get the networks a machine belongs to.
+    *
+    * @param None
+    * @return Belongs To Many Relationship
+    */
   public function networks()
   {
-    return $this->belongsTo('Ryanvade\VirtMan\Network\Network');
+    return $this->belongsToMany('Ryanvade\VirtMan\Network\Network');
   }
 
-  public function addNetwork($network)
+  /**
+    * Machines Networks
+    *
+    * Get the networks a machine belongs to.
+    *
+    * @param TODO
+    * @return TODO
+    */
+  public function addNetworks($network)
   {
     // TODO
   }
 
+  /**
+    * Machines Networks
+    *
+    * Get the networks a machine belongs to.
+    *
+    * @param None
+    * @return Has Many Relationship
+    */
   public function storage()
   {
     return $this->hasMany('Ryanvade\VirtMan\Storage\Storage');
   }
 
+  /**
+    * Machines Networks
+    *
+    * Get the networks a machine belongs to.
+    *
+    * @param TODO
+    * @return TODO
+    */
   public function addStorage($storage)
   {
     // TODO
