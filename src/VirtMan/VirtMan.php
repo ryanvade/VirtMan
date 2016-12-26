@@ -22,6 +22,9 @@ use Machine\Machine;
 use Network\Network;
 use Storage\Storage;
 
+// Exceptions
+use Exceptions\ImpossibleStorageAllocationException;
+
 class VirtMan {
 
   /**
@@ -53,6 +56,20 @@ private $authname = null;
 private $passphrase = null;
 
 /**
+ * Maximum amount of memory for all machines
+ *
+ * @var Integer
+ */
+private $maxMemory = 0;
+
+/**
+ * Maximum Storage Quota size
+ *
+ * @var Integer
+ */
+private $maxQuota = 0;
+
+/**
  * VirtMan
  *
  * VirtMan Constructor
@@ -61,8 +78,11 @@ private $passphrase = null;
  * @return TODO
  */
 public function __construct() {
+  $this->authname = config('virtman.username');
+  $this->passphrase = config('virtman.password');
+  $this->maxQuota = (int)config('virtman.storageQuota');
+  $this->maxMemory = (int)config('virtman.memoryQuota');
   $this->connection = connect();
-
 }
 
   /**
@@ -73,17 +93,17 @@ public function __construct() {
    * @param type var Description
    * @return return type
    */
-  protected function libvirtIsInstalled() {
+  public function libvirtIsInstalled() {
     return function_exists('libvirt_version');
   }
 
   /**
-   * undocumented function summary
+   * Connect
    *
-   * Undocumented function long description
+   * Authenticate with Libvirt and get the connection resource
    *
-   * @param type var Description
-   * @return return type
+   * @param None
+   * @return Libvirt Connection resource
    */
   private function connect()
   {
@@ -93,4 +113,56 @@ public function __construct() {
     ]);
   }
 
+  /**
+   * Remaining Memory
+   *
+   * Amount of memory available for new machines
+   *
+   * @param None
+   * @return Integer
+   */
+  private function remainingMemory()
+  {
+    $memUsed = 0;
+    foreach (Machine::all() as $machine) {
+      $memUsed += $machine->size;
+    }
+    return $this->maxMemory - $memUsed;
+  }
+
+  /**
+   * Remaining Storage Space
+   *
+   * Amount of storage space available for new Storage.
+   *
+   * @param None
+   * @return Integer
+   */
+  private function remainingStorageSpace()
+  {
+    $storageUsed = 0;
+    foreach (Storage::all() as $storage) {
+      $storageUsed += $storage->size;
+    }
+    return $this->maxQuota - $storageUsed;
+  }
+
+  /**
+   * Create Storage
+   *
+   * Create a storage object
+   *
+   * @param String $name
+   * @param String $type
+   * @param Integer Size
+   * @return Storage
+   */
+  public function createStorage(String $name, String $type, Integer $size)
+  {
+    if($size < 0 || $size > $this->maxQuota || $size > remainingStorageSpace())
+      throw new ImpossibleStorageAllocationException("Attempting to create storage with an impossible size", 1);
+
+    $command = new CreateStorage($name, $size, $type, $this->connection);
+    return $command->run();
+  }
 }
