@@ -76,13 +76,6 @@ class CreateMachine extends Command {
   private $group = null;
 
   /**
-   * Libvirt Connection
-   *
-   * @var string
-   */
-  private $conn = null;
-
-  /**
    * Libvirt resource from Machine creation
    *
    * @var Libvirt Resource
@@ -95,7 +88,6 @@ class CreateMachine extends Command {
     *
     * Create Machine command constructor
     *
-    * @param Libvirt Connection $conn
     * @param Storage array $storage
     * @param string $name
     * @param string $type
@@ -104,20 +96,19 @@ class CreateMachine extends Command {
     * @param integer $cpus
     * @param Network $network
     * @param Group $group
+    * @param Libvirt Connection $connection
     * @return None
     */
-  public function __construct($conn, array $storage, String $name, String $type,
+  public function __construct(array $storage, String $name, String $type,
                               String $arch, Integer $memory, Integer $cpus,
-                              Network $network, Group $group) {
+                              Network $network, Group $group, $connection) {
 
     if(empty($storage))
       throw new NoStorageException("Attempting to create a machine with no storage.", 1);
     if(!$network)
       throw new NoNetworkException("Attempting to create a machine with no network.", 1);
-    if(!$conn)
-      throw new Exception("Attempting to create a machine with no libvirt connection.", 1);
 
-    parent::__construct("create_machine");
+    parent::__construct("create_machine", $connection);
 
     $this->arch = $arch;
     $this->memory = $memory;
