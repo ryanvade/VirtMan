@@ -6,6 +6,12 @@ use Ryanvade\VirtMan\Machine\Machine;
 
 abstract class Command {
   /**
+   * Libvirt Connection Resource
+   *
+   * @var Libvirt Resource
+   */
+  protected $conn = null;
+  /**
    *  Command Name
    *
    * @var string
@@ -18,10 +24,12 @@ abstract class Command {
    * Command constructor.
    *
    * @param String $name
+   * @param Libvirt Resource $connection
    * @return None
    */
-  protected function __construct(String $name){
+  protected function __construct(String $name, $connection){
     $this->name = $name;
+    $this->conn = $connection;
   }
 
   /**

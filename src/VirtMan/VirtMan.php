@@ -24,6 +24,11 @@ use Storage\Storage;
 
 class VirtMan {
 
+  /**
+   * Library Version
+   *
+   * @var string
+   */
   const VERSION = '0.0.1';
 
   /**
@@ -47,11 +52,18 @@ private $authname = null;
  */
 private $passphrase = null;
 
-  public function __construct() {
+/**
+ * VirtMan
+ *
+ * VirtMan Constructor
+ *
+ * @param None
+ * @return TODO
+ */
+public function __construct() {
+  $this->connection = connect();
 
-    $this->connection = connect();
-
-  }
+}
 
   /**
    * undocumented function summary
