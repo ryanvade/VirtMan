@@ -211,11 +211,18 @@ class CreateMachine extends Command {
     for ($i=1; $i < count($this->storage); $i++) {
       $s = $this->storage[i];
       if($s->active)
-        throw new StorageAlreadyActiveException("Attempting to create a machine with already active storage.", 1, null, $s->id);
+        throw new StorageAlreadyActiveException("Attempting to reactivate a storage volume.", 1, null, $s->id);
 
+      if($s->initialized) {
       array_push(
-        $disks, libvirt_image_create($this->conn, $s->name, $s->size, $s->type)
+        $disks, libvirt_storagevolume_lookup_by_name($this->conn, $s->name)
       );
+      } else {
+        array_push(
+          $disks, libvirt_image_create($this->conn, $s->name, $s->size, $s->type)
+        );
+        $s->initialized = True;
+      }
       $s->active = True;
       $s->save();
     }
