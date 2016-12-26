@@ -4,6 +4,7 @@ _version **0.0.1**_
 ## Requirements
 * PHP >= 7.0
 * Libvirt PHP extension
+
 ## Installation
 ```bash
 composer require ryanvade/virtman
@@ -24,8 +25,6 @@ $hello = "Hello World";
 - [ ] Delete Storage Pools
 - [ ] Delete Networks
 - [ ] Delete Machine Groups
-
-
 - [ ] List Machines
 - [ ] Change Machine Settings
 - [ ] Change Machine Networks
