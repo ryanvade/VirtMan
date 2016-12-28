@@ -2,8 +2,6 @@
 
 namespace VirtMan\Command;
 
-use VirtMan\Machine\Machine;
-
 abstract class Command {
   /**
    * Libvirt Connection Resource

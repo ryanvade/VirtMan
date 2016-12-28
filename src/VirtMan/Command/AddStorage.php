@@ -2,7 +2,7 @@
 
 namespace VirtMan\Command;
 
-use Command;
+use VirtMan\Comamnd\Command;
 use VirtMan\Group\Group;
 use VirtMan\Machine\Machine;
 use VirtMan\Storage\Storage;

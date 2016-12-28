@@ -2,7 +2,7 @@
 
 namespace VirtMan\Command;
 
-use Command;
+use VirtMan\Command\Command;
 use VirtMan\Storage\Storage;
 
 class CreateStorage extends Command {
