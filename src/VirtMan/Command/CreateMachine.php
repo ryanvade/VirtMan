@@ -144,7 +144,7 @@ class CreateMachine extends Command {
     $this->machine->storage()->addStorage($this->storage);
     $this->machine->networks()->addNetwork($this->network);
     $this->machine->groups()->addGroup($this->group);
-    $this->resource = createMachine();
+    $this->resource = $this->createMachine();
     return $this->machine;
   }
 
@@ -169,9 +169,9 @@ class CreateMachine extends Command {
     * @return Libvirt Resource
     */
   private function createMachine() {
-    $iso = getIsoImage();
-    $disks = getDisks();
-    $networkCard = getNetworkCard();
+    $iso = $this->getIsoImage();
+    $disks = $this->getDisks();
+    $networkCard = $this->getNetworkCard();
     return libvirt_domain_new($this->conn, $this->machineName, $this->arch,
                               $this->memory, $this->memory, $this->cpus, $iso,
                               $disks, $networkCards);
@@ -204,16 +204,9 @@ class CreateMachine extends Command {
       if($s->active)
         throw new StorageAlreadyActiveException("Attempting to reactivate a storage volume.", 1, null, $s->id);
 
-      if($s->initialized) {
-      array_push(
-        $disks, libvirt_storagevolume_lookup_by_name($this->conn, $s->name)
-      );
-      } else {
-        array_push(
-          $disks, libvirt_image_create($this->conn, $s->name, $s->size, $s->type)
-        );
-        $s->initialized = True;
-      }
+      if(!$s->initialized)
+        $s->initialize($this->conn);
+      array_push($disks, libvirt_storagevolume_lookup_by_name($this->conn, $s->name));
       $s->active = True;
       $s->save();
     }

@@ -70,6 +70,24 @@ private $maxMemory = 0;
 private $maxQuota = 0;
 
 /**
+ * Array of all available Machine types
+ *
+ * @var string array
+ */
+private $machineTypes = null;
+
+/**
+ * Arary of all supported Image types
+ *
+ * @var string array
+ */
+private $imageTypes = [
+  'raw',
+  'qcow',
+  'qcow2'
+];
+
+/**
  * VirtMan
  *
  * VirtMan Constructor
@@ -78,20 +96,25 @@ private $maxQuota = 0;
  * @return TODO
  */
 public function __construct() {
+  // Initialize Config Values
   $this->authname = config('virtman.username');
   $this->passphrase = config('virtman.password');
   $this->maxQuota = (int)config('virtman.storageQuota');
   $this->maxMemory = (int)config('virtman.memoryQuota');
+  // Attempt to connect to LibVirt
   $this->connection = $this->connect();
+  // Initialize Environment Values
+  $this->machineTypes = $this->getMachineTypes();
+
 }
 
   /**
-   * undocumented function summary
+   * Libvirt is Installed
    *
-   * Undocumented function long description
+   * Checks if the Libvirt PHP bindings are installed
    *
-   * @param type var Description
-   * @return return type
+   * @param None
+   * @return boolean
    */
   public function libvirtIsInstalled() {
     return function_exists('libvirt_version');
@@ -148,6 +171,25 @@ public function __construct() {
   }
 
   /**
+   * Get Machine Types
+   *
+   * Returns all of the available machine types.
+   *
+   * @param None
+   * @return string array
+   */
+  private function getMachineTypes()
+  {
+    $keys = array_keys(libvirt_connect_get_machine_types($this->connection));
+    $types = [];
+    foreach ($keys as $type) {
+      // Remove trailing NULL character from each machine type
+      array_push($types, substr_replace($type, "", -1, 1));
+    }
+    return $types;
+  }
+
+  /**
    * Create Storage
    *
    * Create a storage object
@@ -164,5 +206,31 @@ public function __construct() {
 
     $command = new CreateStorage($name, $size, $type, $this->connection);
     return $command->run();
+  }
+
+  /**
+   * Create Machine
+   *
+   * Create a Virtual Machine
+   *
+   * @param string $name
+   * @param string $type
+   * @param int $memory
+   * @param int $numCpus
+   * @param string $arch
+   * @param Storage array $storage
+   * @param Network $network
+   * @param Group $group
+   * @return Machine
+   */
+  public function FunctionName(string $name, string $type, int $memory,
+                              int $numCpus, string $arch, array $storage,
+                              Network $network, Group $group)
+  {
+    if($memory < 0 || $memory > $this->maxMemory || $memory > $this->remainingMemory())
+      throw new ImpossibleMemoryAllocationException("Attempting to create a machine with an impossible memory size.", 1);
+
+
+
   }
 }

@@ -4,6 +4,7 @@ namespace VirtMan\Storage;
 
 use VirtMan\Machine\Machine;
 use Illuminate\Database\Eloquent\Model;
+use VirtMan\Exceptions\NoLibvirtConnectionException;
 
 class Storage extends Model {
   /**
@@ -73,6 +74,17 @@ class Storage extends Model {
    */
   public function initialize($connection)
   {
-    // TODO
+    if(!$connection)
+      throw new NoLibvirtConnectionException("Attempting to use libvirt without an active connection.", 1);
+
+    if($this->active || $this->initialized)
+      throw new StorageAlreadyActiveException("Attempting to reinitialize a storage volume.", 1, null, $this->id);
+
+    // TODO check for ISO type and throw exception should we attempt to initialize it
+
+    $hostname = libvirt_image_create($connection, $this->name, $this->size, $this->type);
+    if($hostname !== False)
+      $this->initialized = True;
+    return $hostname !== False;
   }
 }
