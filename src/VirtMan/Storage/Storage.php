@@ -62,4 +62,17 @@ class Storage extends Model {
   {
     // TODO
   }
+
+  /**
+   * Initialize
+   *
+   * Create the storage image on disk with libvirt.
+   *
+   * @param Libvirt Connection Resource
+   * @return boolean
+   */
+  public function initialize($connection)
+  {
+    // TODO
+  }
 }

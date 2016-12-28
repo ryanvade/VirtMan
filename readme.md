@@ -32,7 +32,7 @@ php artisan migrate
 use VirtMan\VirtMan;
 
 $virtMan = new VirtMan();
-$tetstStorage = $virtMan->createStorage("TestStorage", "qcow2", 20480);
+$testStorage = $virtMan->createStorage("TestStorage", "qcow2", 20480);
 ```
 ## TODO
 - [ ] Create Virtual Machines
