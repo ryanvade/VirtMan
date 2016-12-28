@@ -159,7 +159,7 @@ public function __construct() {
    */
   public function createStorage(string $name, string $type, int $size)
   {
-    if($size < 0 || $size > $this->maxQuota || $size > remainingStorageSpace())
+    if($size < 0 || $size > $this->maxQuota || $size > $this->remainingStorageSpace())
       throw new ImpossibleStorageAllocationException("Attempting to create storage with an impossible size", 1);
 
     $command = new CreateStorage($name, $size, $type, $this->connection);
