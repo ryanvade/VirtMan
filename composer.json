@@ -15,11 +15,8 @@
         }
     ],
     "autoload": {
-      "classmap": [
-        "src/VirtMan"
-      ],
       "psr-4": {
-        "Ryanvade\\VirtMan\\": "src/VirtMan"
+        "Ryanvade\\VirtMan\\": "src/"
       }
     }
 }
