@@ -2,6 +2,7 @@
 
 namespace VirtMan\Exceptions;
 
+use Exception;
 use VirtMan\Storage\Storage;
 
 class StorageAlreadyActiveException extends Exception {

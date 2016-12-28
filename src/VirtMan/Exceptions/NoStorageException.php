@@ -2,6 +2,7 @@
 
 namespace VirtMan\Exceptions;
 
+use Exception;
 use VirtMan\Machine\Machine;
 use VirtMan\Storage\Storage;
 

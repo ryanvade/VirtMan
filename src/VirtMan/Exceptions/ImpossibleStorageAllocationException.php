@@ -2,6 +2,8 @@
 
 namespace VirtMan\Exceptions;
 
+use Exception;
+
 class ImpossibleStorageAllocationException extends Exception {
 
   /**

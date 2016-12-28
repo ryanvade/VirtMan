@@ -3,27 +3,27 @@
 namespace VirtMan;
 
 // Commands
-use Command\AddStorage;
-use Command\StopMachine;
-use Command\AddToNetwork;
-use Command\CloneMachine;
-use Command\CloneStorage;
-use Command\StartMachine;
-use Command\CreateMachine;
-use Command\CreateNetwork;
-use Command\CreateStorage;
-use Command\DeleteMachine;
-use Command\DeleteNetwork;
-use Command\DeleteStorage;
+use VirtMan\Command\AddStorage;
+use VirtMan\Command\StopMachine;
+use VirtMan\Command\AddToNetwork;
+use VirtMan\Command\CloneMachine;
+use VirtMan\Command\CloneStorage;
+use VirtMan\Command\StartMachine;
+use VirtMan\Command\CreateMachine;
+use VirtMan\Command\CreateNetwork;
+use VirtMan\Command\CreateStorage;
+use VirtMan\Command\DeleteMachine;
+use VirtMan\Command\DeleteNetwork;
+use VirtMan\Command\DeleteStorage;
 
 // Models
-use Group\Group;
-use Machine\Machine;
-use Network\Network;
-use Storage\Storage;
+use VirtMan\Group\Group;
+use VirtMan\Machine\Machine;
+use VirtMan\Network\Network;
+use VirtMan\Storage\Storage;
 
 // Exceptions
-use Exceptions\ImpossibleStorageAllocationException;
+use VirtMan\Exceptions\ImpossibleStorageAllocationException;
 
 class VirtMan {
 
