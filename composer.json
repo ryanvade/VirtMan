@@ -13,5 +13,13 @@
             "name": "Ryan Owens",
             "email": "RyanOwens@linux.com"
         }
-    ]
+    ],
+    "autoload": {
+      "classmap": [
+        "src/VirtMan"
+      ],
+      "psr-4": {
+        "Ryanvade\\VirtMan\\": "src/VirtMan"
+      }
+    }
 }
