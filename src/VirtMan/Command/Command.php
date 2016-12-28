@@ -1,8 +1,8 @@
 <?php
 
-namespace Ryanvade\VirtMan\Command;
+namespace VirtMan\Command;
 
-use Ryanvade\VirtMan\Machine\Machine;
+use VirtMan\Machine\Machine;
 
 abstract class Command {
   /**

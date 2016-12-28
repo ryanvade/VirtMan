@@ -1,9 +1,9 @@
 <?php
 
-namespace Ryanvade\VirtMan\Command;
+namespace VirtMan\Command;
 
 use Command;
-use Ryanvade\VirtMan\Storage\Storage;
+use VirtMan\Storage\Storage;
 
 class CreateStorage extends Command {
   /**

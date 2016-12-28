@@ -1,8 +1,8 @@
 <?php
 
-namespace Ryanvade\VirtMan\Storage;
+namespace VirtMan\Storage;
 
-use Ryanvade\VirtMan\Machine\Machine;
+use VirtMan\Machine\Machine;
 use Illuminate\Database\Eloquent\Model;
 
 class Storage extends Model {
@@ -33,7 +33,7 @@ class Storage extends Model {
    * @return Belongs To Relationship
    */
   public function machine() {
-    return $this->belongsTo('Ryanvade\VirtMan\Machine\Machine');
+    return $this->belongsTo('VirtMan\Machine\Machine');
   }
 
   /**

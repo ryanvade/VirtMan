@@ -1,15 +1,15 @@
 <?php
 
-namespace Ryanvade\VirtMan\Command;
+namespace VirtMan\Command;
 
 use Command;
-use Ryanvade\VirtMan\Group\Group;
-use Ryanvade\VirtMan\Machine\Machine;
-use Ryanvade\VirtMan\Storage\Storage;
-use Ryanvade\VirtMan\Network\Network;
-use Ryanvade\VirtMan\Exceptions\NoStorageException;
-use Ryanvade\VirtMan\Exceptions\NoNetworkException;
-use Ryanvade\VirtMan\Exceptions\StorageAlreadyActiveException;
+use VirtMan\Group\Group;
+use VirtMan\Machine\Machine;
+use VirtMan\Storage\Storage;
+use VirtMan\Network\Network;
+use VirtMan\Exceptions\NoStorageException;
+use VirtMan\Exceptions\NoNetworkException;
+use VirtMan\Exceptions\StorageAlreadyActiveException;
 
 class CreateMachine extends Command {
   /**

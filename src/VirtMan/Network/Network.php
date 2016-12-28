@@ -1,8 +1,8 @@
 <?php
 
-namespace Ryanvade\VirtMan\Network;
+namespace VirtMan\Network;
 
-use Ryanvade\VirtMan\Machine\Machine;
+use VirtMan\Machine\Machine;
 use Illuminate\Database\Eloquent\Model;
 
 class Network extends Model {
@@ -32,7 +32,7 @@ protected $table = 'virtman_networks';
  */
 public function machines()
 {
-  return $this->hasMany('Ryanvade\VirtMan\Machine\Machine');
+  return $this->hasMany('VirtMan\Machine\Machine');
 }
 
 }

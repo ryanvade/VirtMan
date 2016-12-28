@@ -1,6 +1,6 @@
 <?php
 
-namespace Ryanvade\VirtMan\Exceptions;
+namespace VirtMan\Exceptions;
 
 class ImpossibleStorageAllocationException extends Exception {
 

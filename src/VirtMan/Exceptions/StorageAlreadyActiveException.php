@@ -1,8 +1,8 @@
 <?php
 
-namespace Ryanvade\VirtMan\Exceptions;
+namespace VirtMan\Exceptions;
 
-use Ryanvade\VirtMan\Storage\Storage;
+use VirtMan\Storage\Storage;
 
 class StorageAlreadyActiveException extends Exception {
   /**

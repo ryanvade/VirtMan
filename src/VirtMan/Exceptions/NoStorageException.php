@@ -1,9 +1,9 @@
 <?php
 
-namespace Ryanvade\VirtMan\Exceptions;
+namespace VirtMan\Exceptions;
 
-use Ryanvade\VirtMan\Machine\Machine;
-use Ryanvade\VirtMan\Storage\Storage;
+use VirtMan\Machine\Machine;
+use VirtMan\Storage\Storage;
 
 class NoStorageException extends Exception {
   /**

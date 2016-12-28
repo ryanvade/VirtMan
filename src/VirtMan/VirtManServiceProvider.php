@@ -1,6 +1,6 @@
 <?php
 
-namespace Ryanvade\VirtMan;
+namespace VirtMan;
 
 use Illuminate\Support\ServiceProvider;
 

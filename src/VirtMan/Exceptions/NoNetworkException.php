@@ -1,10 +1,10 @@
 <?php
 
-namespace Ryanvade\VirtMan\Exceptions;
+namespace VirtMan\Exceptions;
 
-use Ryanvade\VirtMan\Machine\Machine;
-use Ryanvade\VirtMan\Storage\Storage;
-use Ryanvade\VirtMan\Network\Network;
+use VirtMan\Machine\Machine;
+use VirtMan\Storage\Storage;
+use VirtMan\Network\Network;
 
 class NoNetworkException extends Exception {
   /**

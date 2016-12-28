@@ -1,6 +1,6 @@
 <?php
 
-namespace Ryanvade\VirtMan\Command;
+namespace VirtMan\Command;
 
 use Command;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Ryanvade\VirtMan;
+namespace VirtMan;
 
 // Commands
 use Command\AddStorage;

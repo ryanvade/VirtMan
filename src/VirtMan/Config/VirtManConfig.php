@@ -1,6 +1,6 @@
 <?php
 
-use Ryanvade\VirtMan\VirtManServiceProvider;
+use VirtMan\VirtManServiceProvider;
 
 return [
   /*

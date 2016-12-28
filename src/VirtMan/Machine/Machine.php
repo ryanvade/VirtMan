@@ -1,10 +1,10 @@
 <?php
 
-namespace Ryanvade\VirtMan\Machine;
+namespace VirtMan\Machine;
 
-use Ryanvade\VirMan\Group\Group;
-use Ryanvade\VirtMan\Network\Network;
-use Ryanvade\VirtMan\Storage\Storage;
+use VirMan\Group\Group;
+use VirtMan\Network\Network;
+use VirtMan\Storage\Storage;
 use Illuminate\Database\Eloquent\Model;
 
 class Machine extends Model {
@@ -39,7 +39,7 @@ class Machine extends Model {
     */
   public function groups()
   {
-    return $this->belongsTo('Ryanvade\VirtMan\Group\Group');
+    return $this->belongsTo('VirtMan\Group\Group');
   }
 
   /**
@@ -65,7 +65,7 @@ class Machine extends Model {
     */
   public function networks()
   {
-    return $this->belongsToMany('Ryanvade\VirtMan\Network\Network');
+    return $this->belongsToMany('VirtMan\Network\Network');
   }
 
   /**
@@ -91,7 +91,7 @@ class Machine extends Model {
     */
   public function storage()
   {
-    return $this->hasMany('Ryanvade\VirtMan\Storage\Storage');
+    return $this->hasMany('VirtMan\Storage\Storage');
   }
 
   /**

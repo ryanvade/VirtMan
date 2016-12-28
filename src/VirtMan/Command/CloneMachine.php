@@ -1,12 +1,12 @@
 <?php
 
-namespace Ryanvade\VirtMan\Command;
+namespace VirtMan\Command;
 
 use Command;
-use Ryanvade\VirtMan\Group\Group;
-use Ryanvade\VirtMan\Machine\Machine;
-use Ryanvade\VirtMan\Storage\Storage;
-use Ryanvade\VirtMan\Network\Network;
+use VirtMan\Group\Group;
+use VirtMan\Machine\Machine;
+use VirtMan\Storage\Storage;
+use VirtMan\Network\Network;
 
 class CloneMachine extends Command {
 

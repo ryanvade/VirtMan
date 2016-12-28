@@ -1,8 +1,8 @@
 <?php
 
-namespace Ryanvade\VirtMan\Group;
+namespace VirtMan\Group;
 
-use Ryanvade\VirtMan\Machine\Machine;
+use VirtMan\Machine\Machine;
 use Illuminate\Database\Eloquent\Model;
 
 class Group extends Model {
@@ -23,7 +23,7 @@ class Group extends Model {
    */
   public function machines()
   {
-    return $this->hasMany('Ryanvade\VirtMan\Machine\Machine');
+    return $this->hasMany('VirtMan\Machine\Machine');
   }
 
 }
