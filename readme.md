@@ -6,13 +6,33 @@ _version **0.0.1**_
 * Libvirt PHP extension
 
 ## Installation
+First grab the package via composer.
 ```bash
 composer require ryanvade/virtman
 ```
-## Examples
-### Hello World
+Then add the service provider to the list of providers in config/app.php.
 ```php
-$hello = "Hello World";
+...
+        /*
+         * Package Service Providers...
+         */
+
+        VirtMan\VirtManServiceProvider::class,
+...
+```
+Finally publish the package to your laravel project and run the migrations.
+```bash
+php artisan vendor:publish
+php artisan migrate
+```
+
+## Examples
+### Create a Storage Object
+```php
+use VirtMan\VirtMan;
+
+$virtMan = new VirtMan();
+$tetstStorage = $virtMan->createStorage("TestStorage", "qcow2", 20480);
 ```
 ## TODO
 - [ ] Create Virtual Machines
