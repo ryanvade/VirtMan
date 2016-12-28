@@ -23,6 +23,17 @@ class Network extends Model {
 protected $table = 'virtman_networks';
 
 /**
+ * Array specifying which columns can be mass assignable
+ *
+ * @var array
+ */
+protected $fillable = [
+  'mac',
+  'type',
+  'model'
+];
+
+/**
  * undocumented function summary
  *
  * Undocumented function long description

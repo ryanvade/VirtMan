@@ -16,13 +16,27 @@ class Storage extends Model {
    * boolean active
    * boolean initialized
    */
-   
+
   /**
    * Migration Table
    *
    * @var string
    */
   protected $table = 'virtman_storage';
+
+  /**
+   * Array specifying which columns can be mass assignable
+   *
+   * @var array
+   */
+  protected $fillable = [
+    'name',
+    'location',
+    'type',
+    'size',
+    'active',
+    'initialized'
+  ];
 
   /**
    * Machine

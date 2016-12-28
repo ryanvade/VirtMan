@@ -30,6 +30,22 @@ class Machine extends Model {
   protected $table = 'virtman_machines';
 
   /**
+   * Array specifying which columns can be mass assignable
+   *
+   * @var string
+   */
+  protected $fillable = [
+    'name',
+    'type',
+    'status',
+    'arch',
+    'memory',
+    'cpus',
+    'started_at',
+    'stopped_at'
+  ];
+
+  /**
     * Machines Groups
     *
     * Get the groups a machine belongs to.
