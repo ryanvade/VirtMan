@@ -9,25 +9,25 @@ class ImpossibleStorageAllocationException extends Exception {
    *
    * Exception constructor.
    *
-   * @param String $message
-   * @param integer $code
+   * @param string $message
+   * @param int $code
    * @param Exception $previous
    * @return None
    */
   public function __construct($message, $code = 0, Exception $previous = null,
-  integer $machine_id = null, integer $network_id = null) {
+  int $machine_id = null, int $network_id = null) {
     parent::__construct($message, $code, $previous);
   }
 
  /**
-  * To String
+  * To string
   *
   * Generate a description of the exception.
   *
   * @param None
-  * @return String
+  * @return string
   */
-  public function __toString() {
+  public function __tostring() {
     $res = __CLASS__ . ": [{$this->code}]: {$this->message} \n";
     return $res;
   }

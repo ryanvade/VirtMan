@@ -57,7 +57,7 @@ class CreateMachine extends Command {
   /**
    * Created Machine number of vcpus cores
    *
-   * @var integers
+   * @var ints
    */
   private $cpus = null;
 
@@ -92,15 +92,15 @@ class CreateMachine extends Command {
     * @param string $name
     * @param string $type
     * @param string $arch
-    * @param integer $memory
-    * @param integer $cpus
+    * @param int $memory
+    * @param int $cpus
     * @param Network $network
     * @param Group $group
     * @param Libvirt Connection $connection
     * @return None
     */
-  public function __construct(array $storage, String $name, String $type,
-                              String $arch, Integer $memory, Integer $cpus,
+  public function __construct(array $storage, string $name, string $type,
+                              string $arch, int $memory, int $cpus,
                               Network $network, Group $group, $connection) {
 
     if(empty($storage))
@@ -153,10 +153,10 @@ class CreateMachine extends Command {
     *
     * Generate a Machine name given the Machine's type.
     *
-    * @param String $type
-    * @return String
+    * @param string $type
+    * @return string
     */
-  private function generateMachineName(String $type) {
+  private function generateMachineName(string $type) {
     return $type . "Machine" . (Machine::where('type', $type)->count() + 1);
   }
 
@@ -183,7 +183,7 @@ class CreateMachine extends Command {
     * Get the instalation image for the Machine.
     *
     * @param None
-    * @return String
+    * @return string
     */
   private function getIsoImage() {
     return $this->storage[0]->location;
@@ -226,7 +226,7 @@ class CreateMachine extends Command {
     * Get the Network Card information for the Machine.
     *
     * @param None
-    * @return String array
+    * @return string array
     */
   private function getNetworkCard() {
     $networkCard = [

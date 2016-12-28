@@ -23,11 +23,11 @@ abstract class Command {
    *
    * Command constructor.
    *
-   * @param String $name
+   * @param string $name
    * @param Libvirt Resource $connection
    * @return None
    */
-  protected function __construct(String $name, $connection){
+  protected function __construct(string $name, $connection){
     $this->name = $name;
     if(!$connection)
       throw new Exception("Attempting to create a " .

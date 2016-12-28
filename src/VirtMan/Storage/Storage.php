@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Storage extends Model {
   /**
-   * integer ID
+   * int ID
    * Date timestamps
-   * String name
-   * String location
+   * string name
+   * string location
    * string type
-   * integer size
+   * int size
    * boolean active
    * boolean initialized
    */

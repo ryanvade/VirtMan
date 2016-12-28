@@ -17,26 +17,26 @@ class StorageAlreadyActiveException extends Exception {
    *
    * Exception constructor.
    *
-   * @param String $message
-   * @param integer $code
+   * @param string $message
+   * @param int $code
    * @param Exception $previous
-   * @param integer $storage_id
+   * @param int $storage_id
    * @return None
    */
-  public function __construct($message, $code = 0, Exception $previous = null, Integer $storage_id) {
+  public function __construct($message, $code = 0, Exception $previous = null, int $storage_id) {
     $this->storage = Storage::find($storage_id);
     parent::__construct($message, $code, $previous);
   }
 
   /**
-   * To String
+   * To string
    *
    * Generate a description of the exception.
    *
    * @param None
-   * @return String
+   * @return string
    */
-  public function __toString() {
+  public function __tostring() {
     $res = __CLASS__ . ": [{$this->code}]: {$this->message}";
     $res .= ': ' . $this->storage->id . '\n';
     return $res;

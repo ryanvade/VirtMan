@@ -58,14 +58,14 @@ private $passphrase = null;
 /**
  * Maximum amount of memory for all machines
  *
- * @var Integer
+ * @var int
  */
 private $maxMemory = 0;
 
 /**
  * Maximum Storage Quota size
  *
- * @var Integer
+ * @var int
  */
 private $maxQuota = 0;
 
@@ -82,7 +82,7 @@ public function __construct() {
   $this->passphrase = config('virtman.password');
   $this->maxQuota = (int)config('virtman.storageQuota');
   $this->maxMemory = (int)config('virtman.memoryQuota');
-  $this->connection = connect();
+  $this->connection = $this->connect();
 }
 
   /**
@@ -119,7 +119,7 @@ public function __construct() {
    * Amount of memory available for new machines
    *
    * @param None
-   * @return Integer
+   * @return int
    */
   private function remainingMemory()
   {
@@ -136,7 +136,7 @@ public function __construct() {
    * Amount of storage space available for new Storage.
    *
    * @param None
-   * @return Integer
+   * @return int
    */
   private function remainingStorageSpace()
   {
@@ -152,12 +152,12 @@ public function __construct() {
    *
    * Create a storage object
    *
-   * @param String $name
-   * @param String $type
-   * @param Integer Size
+   * @param string $name
+   * @param string $type
+   * @param int Size
    * @return Storage
    */
-  public function createStorage(String $name, String $type, Integer $size)
+  public function createStorage(string $name, string $type, int $size)
   {
     if($size < 0 || $size > $this->maxQuota || $size > remainingStorageSpace())
       throw new ImpossibleStorageAllocationException("Attempting to create storage with an impossible size", 1);

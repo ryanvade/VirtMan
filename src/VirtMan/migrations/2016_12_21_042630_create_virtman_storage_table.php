@@ -25,7 +25,7 @@ class CreateVirtmanStorageTable extends Migration
             // Storage Type (QCOW2, RAW, ISO)
             $table->string('type');
             // Storage Size (MB)
-            $table->unsignedInteger('size')->nullable();
+            $table->unsignedint('size')->nullable();
             // Whether the storage is currently in use
             $table->boolean('active')->default(False);
             // Whether the storage image has been created

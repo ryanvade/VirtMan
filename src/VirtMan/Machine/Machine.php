@@ -10,13 +10,13 @@ use Illuminate\Database\Eloquent\Model;
 class Machine extends Model {
   /*
    * Machine Model:
-   * integer id
+   * int id
    * string name
    * string type
    * string status
    * string arch
-   * integer memory (mB)
-   * integer cpus
+   * int memory (mB)
+   * int cpus
    * date started_at
    * date stopped_at
    * date timestamps

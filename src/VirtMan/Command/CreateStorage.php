@@ -30,7 +30,7 @@ class CreateStorage extends Command {
   /**
    * Size for the storage image in MB.
    *
-   * @var integer
+   * @var int
    */
   private $size = null;
 
@@ -67,13 +67,13 @@ class CreateStorage extends Command {
     *
     * Command constructor
     *
-    * @param String $storageName
-    * @param Integer $size
-    * @param String $type
+    * @param string $storageName
+    * @param int $size
+    * @param string $type
     * @param Libvirt Resource $connection
     * @return None
     */
-   public function __construct(String $storageName, Integer $size, String $type,
+   public function __construct(string $storageName, int $size, string $type,
                               $connection)
    {
      $this->storageName = $storageName;

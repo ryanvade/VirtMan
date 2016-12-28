@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Network extends Model {
   /*
    *
-   * integer id
+   * int id
    * string mac
    * string type
    * string model
