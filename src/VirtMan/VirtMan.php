@@ -24,6 +24,7 @@ use VirtMan\Storage\Storage;
 
 // Exceptions
 use VirtMan\Exceptions\ImpossibleStorageAllocationException;
+use VirtMan\Exceptions\ImpossibleMemoryAllocationException;
 
 class VirtMan {
 
@@ -223,14 +224,18 @@ public function __construct() {
    * @param Group $group
    * @return Machine
    */
-  public function FunctionName(string $name, string $type, int $memory,
+  public function createMachine(string $name, string $type, int $memory,
                               int $numCpus, string $arch, array $storage,
                               Network $network, Group $group)
   {
     if($memory < 0 || $memory > $this->maxMemory || $memory > $this->remainingMemory())
       throw new ImpossibleMemoryAllocationException("Attempting to create a machine with an impossible memory size.", 1);
 
+    if(!in_array($arch, $this->machineTypes))
+      throw new InvalidArchitectureException("Attempting to create a machine with an unsupported Architecture", 1, null, $arch);
 
-
+    $command = new CreateMachine($storage, $name, $type, $arch, $memory, $numCpus,
+                                $network, $group, $this->connection);
+    return $command->run();
   }
 }
