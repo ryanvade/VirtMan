@@ -13,7 +13,7 @@ class CreateVirtmanStorageTable extends Migration
      */
     public function up()
     {
-        Schema::table('virtman_storage', function (Blueprint $table) {
+        Schema::create('virtman_storage', function (Blueprint $table) {
             // Identifier
             $table->increments('id');
             // Date created, last updated
