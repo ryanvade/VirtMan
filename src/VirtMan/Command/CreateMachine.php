@@ -163,7 +163,7 @@ class CreateMachine extends Command {
     $networkCard = $this->getNetworkCard();
     return libvirt_domain_new($this->conn, $this->machineName, $this->arch,
                               $this->memory, $this->memory, $this->cpus, $iso,
-                              $disks, $networkCards);
+                              $disks, $networkCard);
   }
 
   /**
@@ -216,7 +216,7 @@ class CreateMachine extends Command {
         "network" => $this->network->network,
         "model" => $this->network->model
       ];
-    return $networkCards;
+    return $networkCard;
   }
 
 }

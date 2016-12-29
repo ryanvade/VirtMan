@@ -32,13 +32,26 @@ php artisan migrate
 use VirtMan\VirtMan;
 
 $virtMan = new VirtMan();
+$testInstallImage = $virtMan->createStorage("installimage.iso", "ISO", -1);
 $testStorage = $virtMan->createStorage("TestStorage", "qcow2", 20480);
+```
+### Create a Network Object
+```php
+
+$network = $virtMan->createNetwork("00:11:22:33:44:55", "machine_network", "e1000");
+```
+### Create a Virtual Machine
+```php
+$machine = $virtMan("TestMachine", "Linux", 2048, 1, "x86_64", [
+  $testInstallImage,
+  $testStorage
+], $network);
 ```
 ## TODO
 - [ ] Create Virtual Machines
 - [x] Create Storage Images
 - [ ] Create Storage Pools
-- [ ] Create Public/Private Networks
+- [x] Create Networks
 - [ ] Create Machine Groups
 - [ ] Delete Virtual Machines
 - [ ] Delete Storage Images
