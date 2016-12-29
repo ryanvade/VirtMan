@@ -36,7 +36,7 @@ $testStorage = $virtMan->createStorage("TestStorage", "qcow2", 20480);
 ```
 ## TODO
 - [ ] Create Virtual Machines
-- [ ] Create Storage Images
+- [x] Create Storage Images
 - [ ] Create Storage Pools
 - [ ] Create Public/Private Networks
 - [ ] Create Machine Groups
