@@ -58,9 +58,12 @@ class CreateNetwork extends Command {
   {
     parent::__construct("create_network", $connection);
     // Get rid of trailing new line
-    $nics = libvirt_connect_get_nic_models($connection);
-    $nics[count($nics)-1] = substr_replace($nics[count($nics)-1], "", -1, 1);
-    $this->availableModels = $nics;
+    if(config('virtman.connectionType') == "qemu")
+    {
+      $nics = libvirt_connect_get_nic_models($connection);
+      $nics[count($nics)-1] = substr_replace($nics[count($nics)-1], "", -1, 1);
+      $this->availableModels = $nics;
+    }
 
     if(!$this->validateMac($mac))
       throw new InvalidMacException("Attempting to create a network with an invalid MAC.", 1);
@@ -118,6 +121,7 @@ class CreateNetwork extends Command {
    */
   private function validateModel(string $model)
   {
-    return in_array($model, $this->availableModels);
+    $notUsingQemu = config('virtman.connectionType') != "qemu";
+    return $notUsingQemu || in_array($model, $this->availableModels);
   }
 }
