@@ -207,7 +207,7 @@ public function __construct() {
       $URI .= "+ssh:///" . config('virtman.sshUser') . "@";
       $URI .= config('virtman.remoteUrl') . "/" . config('virtman.daemonMode');
     }else {
-      $URI .= "///" . config('virtman.daemonMode');
+      $URI .= ":///" . config('virtman.daemonMode');
     }
     return $URI;
   }
