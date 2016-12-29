@@ -265,7 +265,7 @@ public function __construct() {
    */
   public function createMachine(string $name, string $type, int $memory,
                               int $numCpus, string $arch, array $storage,
-                              Network $network, Group $group)
+                              Network $network)
   {
     if($memory < 0 || $memory > $this->maxMemory || $memory > $this->remainingMemory())
       throw new ImpossibleMemoryAllocationException("Attempting to create a
@@ -276,7 +276,7 @@ public function __construct() {
       with an unsupported Architecture", 1, null, $arch);
 
     $command = new CreateMachine($storage, $name, $type, $arch, $memory, $numCpus,
-                                $network, $group, $this->connection);
+                                $network, $this->connection);
     return $command->run();
   }
 }
