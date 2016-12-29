@@ -132,7 +132,7 @@ class CreateMachine extends Command {
       'stopped_at' => null
     ]);
     $this->machine->addStorage($this->storage);
-    $this->machine->addNetwork($this->network);
+    $this->machine->addNetworks($this->network);
     $this->resource = $this->createMachine();
     return $this->machine;
   }
