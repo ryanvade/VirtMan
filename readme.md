@@ -42,10 +42,10 @@ $network = $virtMan->createNetwork("00:11:22:33:44:55", "machine_network", "e100
 ```
 ### Create a Virtual Machine
 ```php
-$machine = $virtMan("TestMachine", "Linux", 2048, 1, "x86_64", [
+$machine = $virtMan->createMachine("TestMachine", "Linux", 2048, 1, "x86_64", [
   $testInstallImage,
-  $testStorage
-], $network);
+  $testStorage],
+  $network);
 ```
 ## TODO
 - [ ] Create Virtual Machines
