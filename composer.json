@@ -5,7 +5,8 @@
     "type": "library",
     "require": {
         "illuminate/support": "^5.3",
-        "illuminate/database": "^5.3"
+        "illuminate/database": "^5.3",
+        "doctrine/dbal": "^2.5"
     },
     "license": "MIT",
     "authors": [
