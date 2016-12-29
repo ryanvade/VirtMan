@@ -69,13 +69,6 @@ class CreateMachine extends Command {
   private $network = null;
 
   /**
-   * Created Machine Group
-   *
-   * @var Group
-   */
-  private $group = null;
-
-  /**
    * Libvirt resource from Machine creation
    *
    * @var Libvirt Resource
@@ -95,13 +88,12 @@ class CreateMachine extends Command {
     * @param int $memory
     * @param int $cpus
     * @param Network $network
-    * @param Group $group
     * @param Libvirt Connection $connection
     * @return None
     */
   public function __construct(array $storage, string $name, string $type,
                               string $arch, int $memory, int $cpus,
-                              Network $network, Group $group, $connection) {
+                              Network $network, $connection) {
 
     if(empty($storage))
       throw new NoStorageException("Attempting to create a machine with no storage.", 1);
@@ -116,7 +108,6 @@ class CreateMachine extends Command {
     $this->conn = $conn;
     $this->storage = $storage;
     $this->network = $network;
-    $this->group = $group;
 
     $this->type = ($type)? $type : "nix";
     $this->machineName = ($name)? $name : generateMachineName($this->type);
@@ -143,7 +134,6 @@ class CreateMachine extends Command {
     ]);
     $this->machine->storage()->addStorage($this->storage);
     $this->machine->networks()->addNetwork($this->network);
-    $this->machine->groups()->addGroup($this->group);
     $this->resource = $this->createMachine();
     return $this->machine;
   }
