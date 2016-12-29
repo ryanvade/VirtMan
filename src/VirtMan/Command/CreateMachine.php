@@ -212,9 +212,9 @@ class CreateMachine extends Command {
     */
   private function getNetworkCard() {
     $networkCard = [
-        "mac" => $net->mac,
-        "network" => $net->type,
-        "model" => $net->model
+        "mac" => $this->network->mac,
+        "network" => $this->network->network,
+        "model" => $this->network->model
       ];
     return $networkCards;
   }
