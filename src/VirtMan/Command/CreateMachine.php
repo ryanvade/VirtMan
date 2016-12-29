@@ -131,7 +131,7 @@ class CreateMachine extends Command {
     * @return Machine
     */
   public function run() {
-    $this->machine = new Machine([
+    $this->machine = Machine::create([
       'name' => $this->machineName,
       'type' => $this->type,
       'status' => 'installing',

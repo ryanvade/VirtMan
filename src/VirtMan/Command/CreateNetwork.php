@@ -88,7 +88,7 @@ class CreateNetwork extends Command {
    */
   public function run()
   {
-    $this->networkObject = new Network([
+    $this->networkObject = Network::create([
       'mac' => $this->mac,
       'network' => $this->network,
       'model' => $this->model

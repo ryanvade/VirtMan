@@ -94,7 +94,7 @@ class CreateStorage extends Command {
     */
    public function run()
    {
-     $this->storage = new Storage([
+     $this->storage = Storage::create([
        'name' => $this->storageName,
        'location' => $this->fullLocation,
        'type' => $this->type,
