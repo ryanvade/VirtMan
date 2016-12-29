@@ -5,7 +5,7 @@ namespace VirtMan\Storage;
 use Illuminate\Database\Eloquent\Model;
 use VirtMan\Storage\Volume;
 
-class StoragePool extends Model {
+class Pool extends Model {
   /*
    * string type
    * string name
@@ -51,5 +51,36 @@ class StoragePool extends Model {
      'permissionsOwner',
      'permissionsGroup'
    ];
+
+   /**
+    * undocumented function summary
+    *
+    * Undocumented function long description
+    *
+    * @param type var Description
+    * @return return type
+    */
+   public function initialize($value='')
+   {
+     // TODO: Generate XML
+     // TODO: pool = libvirt_storagepool_define_xml($res, $xml, $flags)
+     // TODO: bool = libvirt_storagepool_create($pool);
+   }
+
+
+   /**
+    * undocumented function summary
+    *
+    * Undocumented function long description
+    *
+    * @param type var Description
+    * @return return type
+    */
+   public function delete($value='')
+   {
+     // TODO: destroy the pool
+     // TODO: delete the pool
+     // TODO: undefine the pool
+   }
 
 }
