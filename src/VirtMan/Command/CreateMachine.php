@@ -104,7 +104,7 @@ class CreateMachine extends Command {
     $this->arch = $arch;
     $this->memory = $memory;
     $this->cpus = $cpus;
-    $this->conn = $conn;
+    $this->conn = $connection;
     $this->storage = $storage;
     $this->network = $network;
 
