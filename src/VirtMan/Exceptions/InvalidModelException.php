@@ -4,18 +4,11 @@ namespace VirtMan\Exceptions;
 
 use Exception;
 
-class InvalidArchitectureException extends Exception {
+class InvalidModelException extends Exception {
   /**
-   * The invalid Architecture
+   * Invalid Mac Exception
    *
-   * @var string
-   */
-  private $arch = "";
-
-  /**
-   * Invalid Architecture Exception
-   *
-   * Exception for unsupported Architectures.
+   * Exception for invalid MAC addresses
    *
    * @param string $message
    * @param int $code
@@ -23,9 +16,8 @@ class InvalidArchitectureException extends Exception {
    * @param string $arch
    * @return return type
    */
-  public function __construct($message, $code, $previous = null, $arch)
+  public function __construct($message, $code, $previous = null)
   {
-    $this->arch = $arch;
     parent::__construct($message, $code, $previous);
   }
 
@@ -39,8 +31,7 @@ class InvalidArchitectureException extends Exception {
    */
   public function __tostring()
   {
-    $res = __CLASS__ . ": [{$this->code}]: {$this->message}";
-    $res .= ": {$this->arch}\n";
+    $res = __CLASS__ . ": [{$this->code}]: {$this->message}\n";
     return $res;
   }
 }

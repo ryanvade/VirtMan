@@ -25,6 +25,7 @@ use VirtMan\Storage\Storage;
 // Exceptions
 use VirtMan\Exceptions\ImpossibleStorageAllocationException;
 use VirtMan\Exceptions\ImpossibleMemoryAllocationException;
+use VirtMan\Exceptions\InvalidArchitectureException;
 
 class VirtMan {
 
@@ -188,6 +189,21 @@ public function __construct() {
       array_push($types, substr_replace($type, "", -1, 1));
     }
     return $types;
+  }
+
+  /**
+   * Create Network
+   *
+   * Create a Network Object
+   *
+   * @param string mac
+   * @param string network
+   * @param string model
+   * @return Network
+   */
+  public function createNetwork(string $mac, string $network, string $model)
+  {
+    $command = new CreateNetwork();
   }
 
   /**

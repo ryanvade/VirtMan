@@ -14,5 +14,6 @@ return [
    'username' => 'root',
    'password' => 'password',
    'storageQuota' => '0',
-   'memoryQuota' => '0'
+   'memoryQuota' => '0',
+   'storageLocation' => '/var/lib/libvirt/images'
 ];

@@ -10,7 +10,7 @@ class Network extends Model {
    *
    * int id
    * string mac
-   * string type
+   * string network
    * string model
    *
    */
@@ -29,7 +29,7 @@ protected $table = 'virtman_networks';
  */
 protected $fillable = [
   'mac',
-  'type',
+  'network',
   'model'
 ];
 
