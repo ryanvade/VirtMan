@@ -15,5 +15,11 @@ return [
    'password' => 'password',
    'storageQuota' => '0',
    'memoryQuota' => '0',
-   'storageLocation' => '/var/lib/libvirt/images'
+   'storageLocation' => '/var/lib/libvirt/images',
+   'connectionType' => 'test',
+   'usingSSH' => False,
+   'sshUser' => '',
+   'sshPassword' => '',
+   'remoteUrl' => '',
+   'daemonMode' => 'default'
 ];

@@ -5,6 +5,7 @@ namespace VirtMan\Command;
 use VirtMan\Command\Command;
 use VirtMan\Network\Network;
 use VirtMan\Exceptions\InvalidMacException;
+use VirtMan\Exceptions\InvalidModelException;
 
 class CreateNetwork extends Command {
   /**

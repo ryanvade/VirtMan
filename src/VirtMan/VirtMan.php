@@ -132,7 +132,8 @@ public function __construct() {
    */
   private function connect()
   {
-    return libvirt_connect('null', false, [
+    $URI = $this->getConnectionURI();
+    return libvirt_connect($URI, false, [
       VIR_CRED_AUTHNAME => $this->authname,
       VIR_CRED_PASSPHRASE => $this->passphrase
     ]);
@@ -192,6 +193,26 @@ public function __construct() {
   }
 
   /**
+   * Get Connection URI
+   *
+   * Read from the VirtMan config to build the connection URI
+   *
+   * @param None
+   * @return string
+   */
+  private function getConnectionURI()
+  {
+    $URI = config('virtman.connectionType');
+    if(config('virtman.usingSSH')){
+      $URI .= "+ssh:///" . config('virtman.sshUser') . "@";
+      $URI .= config('virtman.remoteUrl') . "/" . config('virtman.daemonMode');
+    }else {
+      $URI .= "///" . config('virtman.daemonMode');
+    }
+    return $URI;
+  }
+
+  /**
    * Create Network
    *
    * Create a Network Object
@@ -203,7 +224,8 @@ public function __construct() {
    */
   public function createNetwork(string $mac, string $network, string $model)
   {
-    $command = new CreateNetwork();
+    $command = new CreateNetwork($mac, $network, $model, $this->connection);
+    return $command->run();
   }
 
   /**
@@ -219,7 +241,8 @@ public function __construct() {
   public function createStorage(string $name, string $type, int $size)
   {
     if($size < 0 || $size > $this->maxQuota || $size > $this->remainingStorageSpace())
-      throw new ImpossibleStorageAllocationException("Attempting to create storage with an impossible size", 1);
+      throw new ImpossibleStorageAllocationException("Attempting to create
+      storage with an impossible size", 1);
 
     $command = new CreateStorage($name, $size, $type, $this->connection);
     return $command->run();
@@ -245,10 +268,12 @@ public function __construct() {
                               Network $network, Group $group)
   {
     if($memory < 0 || $memory > $this->maxMemory || $memory > $this->remainingMemory())
-      throw new ImpossibleMemoryAllocationException("Attempting to create a machine with an impossible memory size.", 1);
+      throw new ImpossibleMemoryAllocationException("Attempting to create a
+      machine with an impossible memory size.", 1);
 
     if(!in_array($arch, $this->machineTypes))
-      throw new InvalidArchitectureException("Attempting to create a machine with an unsupported Architecture", 1, null, $arch);
+      throw new InvalidArchitectureException("Attempting to create a machine
+      with an unsupported Architecture", 1, null, $arch);
 
     $command = new CreateMachine($storage, $name, $type, $arch, $memory, $numCpus,
                                 $network, $group, $this->connection);
