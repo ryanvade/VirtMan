@@ -45,8 +45,8 @@
 | permissions    | int[]    | file permissions (see bellow for details)
 | port           | int      | Remote connection port number
 
-#### Storage Pool Type Details
-| Types  
+#### Storage Pool Available Types
+| Type  
 | ---
 | dir (Default)
 | fs
@@ -63,7 +63,7 @@
 
 #### Permissions Array Details
 | Key   | type | Description
-| ---
+| ---   | ---  | ---
 | Mode  | int  | Read, write, execute
 | Owner | int  | Owner account who owns the pool
 | Group | int  | Group who owns the pool
