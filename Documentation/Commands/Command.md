@@ -1,4 +1,4 @@
-# (abstract) Command:
+# abstract Command:
 
 ## Abstract Command definition
 
@@ -6,4 +6,10 @@
 * -name:string
 
 ### Functions
-* +command(): name = ""
+* +command()
+
+| Argument | Type   | Description
+| ---      | ---    | ---
+| name     | string | Name of the command
+
+* +run()
